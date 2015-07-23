@@ -70,7 +70,7 @@ class Delhivery_Lastmile_Model_Shippinglabel extends Mage_Core_Model_Abstract {
 				
 
 				// Add Order ID, Date and COD amount
-				$this->_setFontRegular($page, 7);
+				$this->_setFontRegular($page, 11);
 				$page->drawText(Mage::helper('sales')->__('Order # ') . $order->getRealOrderId(), $x1+190, ($y1+25), 'UTF-8');
 				$page->drawText(Mage::helper('sales')->__('Order Date: ') . Mage::helper('core')->formatDate(
                 $order->getCreatedAtStoreDate(), 'medium', false), $x1+190, ($y1+15), 'UTF-8');
@@ -83,14 +83,14 @@ class Delhivery_Lastmile_Model_Shippinglabel extends Mage_Core_Model_Abstract {
 				$page->setFont(Zend_Pdf_Font::fontWithPath($fontPath), 30);
 				$barcodeImage = "*".$waybill."*";
 				$page->drawText($barcodeImage, $x1+390, $y1+12);				
-		        $this->_setFontRegular($page, 7);
+		        $this->_setFontRegular($page, 11);
 				$page->drawText("*", $x1+385, $y1+15);
 				$page->drawText("*", $x1+540, $y1+15);
 				$page->drawText("AWB# $waybill", $x1+420, $y1+2);
 				$this->_setFontBold($page, 8);
 				$page->drawText("Ship to:", $x1+390, $y1-15);
 				$page->drawText("From:", $x1, $y1-15);
-				$this->_setFontRegular($page, 7);
+				$this->_setFontRegular($page, 11);
 				// Add Shipping Address
 				$shippingAddress = $this->_formatAddress($order->getShippingAddress()->format('pdf'));				
 				$addressy = $y1-25;
@@ -191,7 +191,7 @@ class Delhivery_Lastmile_Model_Shippinglabel extends Mage_Core_Model_Abstract {
      * @param  int $size
      * @return Zend_Pdf_Resource_Font
      */
-    protected function _setFontRegular($object, $size = 7)
+    protected function _setFontRegular($object, $size = 11)
     {
         $font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/LinLibertineFont/LinLibertine_Re-4.4.1.ttf');
         $object->setFont($font, $size);
@@ -205,7 +205,7 @@ class Delhivery_Lastmile_Model_Shippinglabel extends Mage_Core_Model_Abstract {
      * @param  int $size
      * @return Zend_Pdf_Resource_Font
      */
-    protected function _setFontBold($object, $size = 7)
+    protected function _setFontBold($object, $size = 11)
     {
         $font = Zend_Pdf_Font::fontWithPath(Mage::getBaseDir() . '/lib/LinLibertineFont/LinLibertine_Bd-2.8.1.ttf');
         $object->setFont($font, $size);
